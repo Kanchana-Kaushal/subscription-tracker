@@ -35,6 +35,7 @@ export const signUp = async (req, res, next) => {
             message: "User created successfully",
             data: {
                 name: newUser.name,
+                userId: user._id,
                 email: newUser.email,
                 token,
             },
@@ -75,6 +76,7 @@ export const signIn = async (req, res, next) => {
             message: "User signed in successfully",
             data: {
                 name: user.name,
+                userId: user._id,
                 email,
                 token,
             },
