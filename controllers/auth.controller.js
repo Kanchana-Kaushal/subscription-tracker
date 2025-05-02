@@ -26,7 +26,7 @@ export const signUp = async (req, res, next) => {
 
         const newUser = await user.save();
 
-        const token = jwt.sign({ email }, jwtSecretKey, {
+        const token = jwt.sign({ email, userId: newUser._id }, jwtSecretKey, {
             expiresIn: jwtExpiresIn,
         });
 
@@ -67,7 +67,7 @@ export const signIn = async (req, res, next) => {
             throw err;
         }
 
-        const token = jwt.sign({ email }, jwtSecretKey, {
+        const token = jwt.sign({ email, userId: user._id }, jwtSecretKey, {
             expiresIn: jwtExpiresIn,
         });
 
